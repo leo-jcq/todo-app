@@ -42,7 +42,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         <>
             <ThemeContext.Provider value={theme}>
                 <ThemeUpdateContext.Provider value={toggleTheme}>
-                    <div className="app" style={COLORS[theme] as CSSProperties}>
+                    <div className={'app ' + theme} style={COLORS[theme] as CSSProperties}>
                         {children}
                     </div>
                 </ThemeUpdateContext.Provider>

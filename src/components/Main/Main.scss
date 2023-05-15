@@ -1,0 +1,17 @@
+.main {
+    height: 100vh;
+
+    padding: 50px 24px;
+
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% contain;
+}
+
+.light .main {
+    background-image: url("/bg-mobile-light.jpg");
+}
+
+.dark .main {
+    background-image: url("/bg-mobile-dark.jpg");
+}
