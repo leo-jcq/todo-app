@@ -29,7 +29,9 @@ const Main: FC = () => {
 
     const completeTodo = (id: string) => {
         setTodoList((prevTodoList) =>
-            prevTodoList.map((todo) => ({ ...todo, completed: todo.id === id && !todo.completed }))
+            prevTodoList.map((todo) => {
+                return todo.id === id ? { ...todo, completed: !todo.completed } : todo;
+            })
         );
     };
 
