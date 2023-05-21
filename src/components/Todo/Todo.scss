@@ -1,0 +1,88 @@
+.todo {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid var(--light-grayish-blue);
+
+    & .left {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    & .complete {
+        width: 20px;
+        height: 20px;
+
+        border: 1px solid var(--light-grayish-blue);
+        border-radius: 50%;
+
+        background-color: transparent;
+
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & img {
+            width: 11px;
+            height: 9px;
+        }
+
+        /* TODO: rtemettre dans responsive
+        &:hover {
+
+            position: relative;
+
+            border: none;
+
+            background-image: var(--check-background);
+
+            &::before {
+                content: "";
+
+                width: calc(100% - 3px);
+                height: calc(100% - 3px);
+
+                border-radius: 50%;
+
+                background-color: var(--card-bg);
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        } */
+    }
+
+    & .description {
+        color: var(--text-primary);
+    }
+
+    & .delete {
+        width: 18px;
+        height: 18px;
+
+        background-color: transparent;
+
+        border: none;
+
+        cursor: pointer;
+    }
+
+    &.completed {
+        & .complete {
+            border: none;
+
+            background-image: var(--check-background);
+        }
+    }
+}
