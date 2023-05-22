@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { TodoFilter } from '../Main/Main';
+import { TodoFilter } from '../TodoList/TodoList';
 import './FilterBtn.scss';
 
 interface FilterBtnProps {
