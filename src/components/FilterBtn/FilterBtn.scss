@@ -6,7 +6,13 @@
     color: var(--text-secondary);
     font-weight: 700;
 
+    cursor: pointer;
+
     &.active {
-        color: var(--bright-blue);
+        color: var(--bright-blue) !important;
+    }
+
+    &:hover  {
+        color: var(--text-primary);
     }
 }

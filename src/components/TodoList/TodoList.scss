@@ -33,6 +33,13 @@
             border: none;
 
             color: var(--text-secondary);
+            
+            cursor: pointer;
+
+            &:hover  {
+                font-weight: 500;
+                color: var(--text-primary);
+            }
         }
     }
 }
