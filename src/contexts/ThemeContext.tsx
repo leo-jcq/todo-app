@@ -60,16 +60,16 @@ export const COLORS = {
         '--text-primary': 'hsl(235, 19%, 35%)',
         '--text-secondary': 'hsl(236, 9%, 61%)',
         '--text-hover': 'hsl(235, 21%, 11%)',
-        '--light-grayish-blue': 'hsl(233, 11%, 84%)'
+        '--light-grayish-blue': 'hsl(236, 33%, 92%)'
     },
     dark: {
-        '--bright-blue': 'hsl(235, 21%, 11%)',
+        '--bright-blue': 'hsl(220, 98%, 61%)',
         '--check-background': 'linear-gradient(145deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
         '--main-bg': 'hsl(240, 20%, 12%)',
         '--card-bg': 'hsl(235, 24%, 19%)',
         '--text-primary': 'hsl(234, 39%, 85%)',
         '--text-secondary': 'hsl(236, 9%, 61%)',
         '--text-hover': 'hsl(0, 0%, 100%)',
-        '--light-grayish-blue': 'hsl(233, 11%, 84%)'
+        '--light-grayish-blue': 'hsl(235, 19%, 35%)'
     }
 };
