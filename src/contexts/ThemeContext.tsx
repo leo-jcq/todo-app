@@ -12,7 +12,10 @@ export const THEMES: ThemesInterface = {
     dark: 'dark'
 };
 
-const ThemeContext = createContext<ThemeType>(THEMES.light);
+const USER_PREFER_DARK =
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const ThemeContext = createContext<ThemeType>(USER_PREFER_DARK ? THEMES.dark : THEMES.light);
 const ThemeUpdateContext = createContext<() => void>(() => {});
 
 export function useTheme(): ThemeType {
@@ -32,7 +35,7 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<ThemeType>(THEMES.light);
+    const [theme, setTheme] = useState<ThemeType>(USER_PREFER_DARK ? THEMES.dark : THEMES.light);
 
     const toggleTheme: () => void = () => {
         setTheme(isLightTeme(theme) ? THEMES.dark : THEMES.light);
