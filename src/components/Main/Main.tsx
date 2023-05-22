@@ -42,14 +42,14 @@ const Main: FC = () => {
         setTodoList((prevTodoList) => prevTodoList.filter((todo) => !todo.completed));
     };
 
-    const currentTodoList = useMemo<TodoType[]>(() => {
-        if (filter === 'all') {
-            return todoList;
-        } else if (filter === 'active') {
-            return todoList.filter((todo) => !todo.completed);
-        } else {
-            // (filter === 'completed')
-            return todoList.filter((todo) => todo.completed);
+    const currentTodoList = useMemo(() => {
+        switch (filter) {
+            case 'active':
+                return todoList.filter((todo) => !todo.completed);
+            case 'completed':
+                return todoList.filter((todo) => todo.completed);
+            default:
+                return todoList;
         }
     }, [todoList, filter]);
 
