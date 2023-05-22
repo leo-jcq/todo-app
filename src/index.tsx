@@ -13,5 +13,3 @@ const Index: FC = () => {
 };
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(<Index />);
-
-export default Index;
