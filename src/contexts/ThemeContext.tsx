@@ -39,15 +39,13 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     };
 
     return (
-        <>
-            <ThemeContext.Provider value={theme}>
-                <ThemeUpdateContext.Provider value={toggleTheme}>
-                    <div className={'app ' + theme} style={COLORS[theme] as CSSProperties}>
-                        {children}
-                    </div>
-                </ThemeUpdateContext.Provider>
-            </ThemeContext.Provider>
-        </>
+        <ThemeContext.Provider value={theme}>
+            <ThemeUpdateContext.Provider value={toggleTheme}>
+                <div className={'app ' + theme} style={COLORS[theme] as CSSProperties}>
+                    {children}
+                </div>
+            </ThemeUpdateContext.Provider>
+        </ThemeContext.Provider>
     );
 };
 

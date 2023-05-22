@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import iconCheck from '../../assets/icon-check.svg';
 import iconCross from '../../assets/icon-cross.svg';
 import { TodoType } from '../Main/Main';
@@ -11,11 +11,6 @@ interface TodoProps {
 }
 
 const Todo: FC<TodoProps> = ({ todo, removeTodo, completeTodo }) => {
-    const className = useMemo(
-        () => 'todo' + (todo.completed ? ' completed' : ''),
-        [todo.completed]
-    );
-
     const handleRemove = () => {
         removeTodo(todo.id);
     };
@@ -25,9 +20,9 @@ const Todo: FC<TodoProps> = ({ todo, removeTodo, completeTodo }) => {
     };
 
     return (
-        <div className={className}>
-            <div className="left">
-                <button className="complete" onClick={handleComplete}>
+        <div className={'todo' + (todo.completed ? ' completed' : '')}>
+            <div className="left" onClick={handleComplete}>
+                <button className="complete">
                     {todo.completed && <img src={iconCheck} alt="Complete" />}
                 </button>
                 <span className="description">{todo.description}</span>
