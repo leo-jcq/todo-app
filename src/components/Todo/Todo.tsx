@@ -21,11 +21,13 @@ const Todo: FC<TodoProps> = ({ todo, removeTodo, completeTodo }) => {
 
     return (
         <div className={'todo' + (todo.completed ? ' completed' : '')}>
-            <div className="left" onClick={handleComplete}>
-                <button className="complete">
+            <div className="left">
+                <button className="complete" onClick={handleComplete}>
                     {todo.completed && <img src={iconCheck} alt="Complete" />}
                 </button>
-                <span className="description">{todo.description}</span>
+                <span className="description" onClick={handleComplete}>
+                    {todo.description}
+                </span>
             </div>
             <button className="delete" onClick={handleRemove}>
                 <img src={iconCross} alt="Delete" />
