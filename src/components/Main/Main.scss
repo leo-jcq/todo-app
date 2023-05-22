@@ -1,5 +1,5 @@
 .main {
-    height: 100vh;
+    min-height: 100vh;
 
     padding: 50px 24px;
 
@@ -24,4 +24,14 @@
 
 .dark .main {
     background-image: url("/bg-mobile-dark.jpg");
+}
+
+@media screen and (min-width: 720px) {
+    .light .main {
+        background-image: url("/bg-desktop-light.jpg");
+    }
+
+    .dark .main {
+        background-image: url("/bg-desktop-dark.jpg");
+    }
 }

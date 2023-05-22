@@ -10,4 +10,16 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+
+    position: absolute;
+    left: 0;
+    top: calc(100% + 16px);
+}
+
+@media screen and (min-width: 588px) {
+    .filters {
+        width: auto;
+
+        position: static;
+    }
 }
