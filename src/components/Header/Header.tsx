@@ -12,7 +12,7 @@ const Header: FC = () => {
         <header className="header">
             <span className="name">Todo</span>
             <button className="themeSwitch" onClick={themeUpdate}>
-                <img src={isLightTeme(theme) ? iconSun : iconMoon} alt="" />
+                <img src={isLightTeme(theme) ? iconMoon : iconSun} alt="" />
             </button>
         </header>
     );
