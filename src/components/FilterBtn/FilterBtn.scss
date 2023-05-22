@@ -1,0 +1,12 @@
+.filterBtn {
+    background-color: transparent;
+
+    border: none;
+
+    color: var(--text-secondary);
+    font-weight: 700;
+
+    &.active {
+        color: var(--bright-blue);
+    }
+}
