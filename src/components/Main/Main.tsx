@@ -1,7 +1,8 @@
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
+import Filters from '../Filters/Filters';
 import Header from '../Header/Header';
-import Todos from '../TodoList/TodoList';
+import TodoList from '../TodoList/TodoList';
 import './Main.scss';
 
 export type TodoType = {
@@ -10,8 +11,11 @@ export type TodoType = {
     completed: boolean;
 };
 
+export type TodoFilter = 'all' | 'active' | 'completed';
+
 const Main: FC = () => {
     const [todoList, setTodoList] = useState<TodoType[]>([]);
+    const [filter, setFilter] = useState<TodoFilter>('all');
 
     const addTodo = (description: string) => {
         const newTodo: TodoType = {
@@ -19,7 +23,6 @@ const Main: FC = () => {
             description: description,
             completed: false
         };
-        console.log(newTodo.id);
         setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
     };
 
@@ -29,9 +32,9 @@ const Main: FC = () => {
 
     const completeTodo = (id: string) => {
         setTodoList((prevTodoList) =>
-            prevTodoList.map((todo) => {
-                return todo.id === id ? { ...todo, completed: !todo.completed } : todo;
-            })
+            prevTodoList.map((todo) =>
+                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            )
         );
     };
 
@@ -39,16 +42,28 @@ const Main: FC = () => {
         setTodoList((prevTodoList) => prevTodoList.filter((todo) => !todo.completed));
     };
 
+    const currentTodoList = useMemo<TodoType[]>(() => {
+        if (filter === 'all') {
+            return todoList;
+        } else if (filter === 'active') {
+            return todoList.filter((todo) => !todo.completed);
+        } else {
+            // (filter === 'completed')
+            return todoList.filter((todo) => todo.completed);
+        }
+    }, [todoList, filter]);
+
     return (
         <main className="main">
             <Header />
             <AddTodo addTodo={addTodo} />
-            <Todos
-                todoList={todoList}
+            <TodoList
+                todoList={currentTodoList}
                 removeTodo={removeTodo}
                 completeTodo={completeTodo}
                 clearCompleted={clearCompleted}
             />
+            <Filters currentFilter={filter} setFilter={setFilter} />
         </main>
     );
 };
