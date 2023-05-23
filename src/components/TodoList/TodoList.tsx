@@ -1,4 +1,5 @@
 import { FC, useMemo, useState } from 'react';
+import { ReactSortable } from 'react-sortablejs';
 import Filters from '../Filters/Filters';
 import { TodoType } from '../Main/Main';
 import Todo from '../Todo/Todo';
@@ -6,14 +7,21 @@ import './TodoList.scss';
 
 interface TodoListProps {
     todoList: TodoType[];
-    removeTodo: (id: string) => void;
-    completeTodo: (id: string) => void;
+    setTodoList: (todoList: TodoType[]) => void;
+    removeTodo: (id: number) => void;
+    completeTodo: (id: number) => void;
     clearCompleted: () => void;
 }
 
 export type TodoFilter = 'all' | 'active' | 'completed';
 
-const TodoList: FC<TodoListProps> = ({ todoList, removeTodo, completeTodo, clearCompleted }) => {
+const TodoList: FC<TodoListProps> = ({
+    todoList,
+    setTodoList,
+    removeTodo,
+    completeTodo,
+    clearCompleted
+}) => {
     const [filter, setFilter] = useState<TodoFilter>('all');
 
     const itemsLeft = useMemo(() => todoList.filter((todo) => !todo.completed).length, [todoList]);
@@ -31,14 +39,16 @@ const TodoList: FC<TodoListProps> = ({ todoList, removeTodo, completeTodo, clear
 
     return (
         <div className="todos">
-            {currentTodoList.map((todo) => (
-                <Todo
-                    key={todo.id}
-                    todo={todo}
-                    removeTodo={removeTodo}
-                    completeTodo={completeTodo}
-                />
-            ))}
+            <ReactSortable tag="ul" className="todoList" list={todoList} setList={setTodoList}>
+                {currentTodoList.map((todo) => (
+                    <Todo
+                        key={todo.id}
+                        todo={todo}
+                        removeTodo={removeTodo}
+                        completeTodo={completeTodo}
+                    />
+                ))}
+            </ReactSortable>
             <div className="infos">
                 <span className="items">{itemsLeft} items left</span>
                 <Filters currentFilter={filter} setFilter={setFilter} />

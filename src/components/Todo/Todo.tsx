@@ -6,8 +6,8 @@ import './Todo.scss';
 
 interface TodoProps {
     todo: TodoType;
-    removeTodo: (id: string) => void;
-    completeTodo: (id: string) => void;
+    removeTodo: (id: number) => void;
+    completeTodo: (id: number) => void;
 }
 
 const Todo: FC<TodoProps> = ({ todo, removeTodo, completeTodo }) => {
@@ -20,7 +20,7 @@ const Todo: FC<TodoProps> = ({ todo, removeTodo, completeTodo }) => {
     };
 
     return (
-        <div className={'todo' + (todo.completed ? ' completed' : '')}>
+        <li className={'todo' + (todo.completed ? ' completed' : '')}>
             <div className="left">
                 <button className="complete" onClick={handleComplete}>
                     {todo.completed && <img src={iconCheck} alt="Complete" />}
@@ -32,7 +32,7 @@ const Todo: FC<TodoProps> = ({ todo, removeTodo, completeTodo }) => {
             <button className="delete" onClick={handleRemove}>
                 <img src={iconCross} alt="Delete" />
             </button>
-        </div>
+        </li>
     );
 };
 

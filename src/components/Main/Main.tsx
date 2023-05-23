@@ -5,7 +5,7 @@ import TodoList from '../TodoList/TodoList';
 import './Main.scss';
 
 export type TodoType = {
-    id: string;
+    id: number;
     description: string;
     completed: boolean;
 };
@@ -15,18 +15,18 @@ const Main: FC = () => {
 
     const addTodo = (description: string) => {
         const newTodo: TodoType = {
-            id: Date.now().toString() + description,
+            id: Date.now(),
             description: description,
             completed: false
         };
         setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
     };
 
-    const removeTodo = (id: string) => {
+    const removeTodo = (id: number) => {
         setTodoList((prevTodoList) => prevTodoList.filter((todo) => todo.id !== id));
     };
 
-    const completeTodo = (id: string) => {
+    const completeTodo = (id: number) => {
         setTodoList((prevTodoList) =>
             prevTodoList.map((todo) =>
                 todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -44,10 +44,12 @@ const Main: FC = () => {
             <AddTodo addTodo={addTodo} />
             <TodoList
                 todoList={todoList}
+                setTodoList={setTodoList}
                 removeTodo={removeTodo}
                 completeTodo={completeTodo}
                 clearCompleted={clearCompleted}
             />
+            <span className="drag">Drag and drop to reorder list</span>
         </main>
     );
 };

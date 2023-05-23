@@ -12,6 +12,12 @@
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
+    & .todoList {
+        width: 100%;
+
+        list-style-type: none;
+    }
+
     & .infos {
         height: 52px;
         width: 100%;
