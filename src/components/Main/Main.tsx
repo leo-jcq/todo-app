@@ -1,42 +1,13 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import useTodoList from '../../hooks/useTodoList';
 import AddTodo from '../AddTodo/AddTodo';
 import Header from '../Header/Header';
 import TodoList from '../TodoList/TodoList';
 import './Main.scss';
 
-export type TodoType = {
-    id: number;
-    description: string;
-    completed: boolean;
-};
-
 const Main: FC = () => {
-    const [todoList, setTodoList] = useState<TodoType[]>([]);
-
-    const addTodo = (description: string) => {
-        const newTodo: TodoType = {
-            id: Date.now(),
-            description: description,
-            completed: false
-        };
-        setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
-    };
-
-    const removeTodo = (id: number) => {
-        setTodoList((prevTodoList) => prevTodoList.filter((todo) => todo.id !== id));
-    };
-
-    const completeTodo = (id: number) => {
-        setTodoList((prevTodoList) =>
-            prevTodoList.map((todo) =>
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
-            )
-        );
-    };
-
-    const clearCompleted = () => {
-        setTodoList((prevTodoList) => prevTodoList.filter((todo) => !todo.completed));
-    };
+    const [todoList, setTodoList, addTodo, removeTodo, completeTodo, clearCompleted] =
+        useTodoList();
 
     return (
         <main className="main">
