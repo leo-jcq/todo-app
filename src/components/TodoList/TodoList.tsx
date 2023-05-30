@@ -1,7 +1,6 @@
 import { FC, useMemo, useState } from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import Filters from '../Filters/Filters';
-import { TodoType } from '../Main/Main';
 import Todo from '../Todo/Todo';
 import './TodoList.scss';
 
@@ -12,8 +11,6 @@ interface TodoListProps {
     completeTodo: (id: number) => void;
     clearCompleted: () => void;
 }
-
-export type TodoFilter = 'all' | 'active' | 'completed';
 
 const TodoList: FC<TodoListProps> = ({
     todoList,

@@ -1,19 +1,11 @@
 import { CSSProperties, FC, ReactNode, createContext, useContext, useState } from 'react';
 
-type ThemeType = 'light' | 'dark';
-
-interface ThemesInterface {
-    light: ThemeType;
-    dark: ThemeType;
-}
-
 export const THEMES: ThemesInterface = {
     light: 'light',
     dark: 'dark'
 };
 
-const USER_PREFER_DARK =
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const USER_PREFER_DARK = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 const ThemeContext = createContext<ThemeType>(USER_PREFER_DARK ? THEMES.dark : THEMES.light);
 const ThemeUpdateContext = createContext<() => void>(() => {});

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import iconCheck from '../../assets/icon-check.svg';
 import iconCross from '../../assets/icon-cross.svg';
-import { TodoType } from '../Main/Main';
 import './Todo.scss';
 
 interface TodoProps {
